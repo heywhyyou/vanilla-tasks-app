@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+body {
+  background-color: #e5e5e5;
+  color: #202020;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+main {
+  margin-top: 30vh;
+}
+
+.container {
+  max-width: 476px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 0 8px;
+}
+
+ul {
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+.priority__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.priority__name {
+  text-transform: uppercase;
+  color: #000;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 12px 0 4px 0;
+}
+
+.new_task {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.new_task__default {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #989898;
+  padding: 12px 22px 12px 12px;
+}
+
+.new_task__icon {
+  position: absolute;
+  right: 3%;
+  transform: rotate(45deg);
+}
+
+.todo_items {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+li {
+  border-radius: 6px;
+  border: 1px solid #989898;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+}
+
+input[type="checkbox"] {
+  width: 21px;
+  height: 21px;
+  border: 1px solid #989898;
+  border-radius: 50%;
+  background: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  display: grid;
+  place-content: center;
+  align-self: start;
+  margin: 0;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #c4c4c4;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+li span {
+  align-self: start;
+}
+
+.active {
+  background-color: #f4f4f4;
+}
+
+button {
+  /* Button resets */
+  /* Resetting margin and padding */
+  margin: 0;
+  padding: 0;
+
+  /* Resetting border styles */
+  border: none;
+  border-radius: 0;
+
+  /* Resetting background and text styles */
+  background-color: transparent;
+  color: inherit;
+
+  /* Resetting font styles */
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+
+  /* Resetting other styles */
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+}

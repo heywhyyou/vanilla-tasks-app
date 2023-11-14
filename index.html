@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <main>
+      <section class="priority">
+        <div class="container">
+          <div class="priority__wrapper">
+            <h1 class="priority__name">high</h1>
+            <form class="new_task" id="high-form">
+              <input
+                type="text"
+                placeholder="Добавить важных дел"
+                class="new_task__default"
+                id="new-task-high"
+                required
+              />
+              <button
+                type="submit"
+                class="lnr lnr-cross new_task__icon"
+              ></button>
+            </form>
+
+            <ul class="todo_items" id="high-tasks">
+              <li>
+                <input type="checkbox" id="task-1" name="task-1" />
+                <label for="task-1"
+                  >Вот вам и супер интересная тема. <br />
+                  Вы наверняка заметили что ваши файлы с кодом становятся все
+                  объемнее, что хочется вынести некоторые вещи куда-то за
+                  пределы основной программы.</label
+                >
+                <button class="lnr lnr-cross"></button>
+              </li>
+              <li>
+                <input type="checkbox" id="task-2" name="task-2" />
+                <label for="task-2">Сверстать этот TODO list</label>
+                <button class="lnr lnr-cross"></button>
+              </li>
+              <li class="active">
+                <input
+                  type="checkbox"
+                  id="checked-task"
+                  name="checked-task"
+                  checked
+                />
+                <label for="checked-task">Начать делать задачу</label>
+                <button class="lnr lnr-cross"></button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="priority">
+        <div class="container">
+          <div class="priority__wrapper">
+            <h1 class="priority__name">low</h1>
+            <form class="new_task" id="low-form">
+              <input
+                type="text"
+                placeholder="Добавить"
+                class="new_task__default"
+                id="new-task-low"
+              />
+              <button
+                type="submit"
+                class="lnr lnr-cross new_task__icon"
+              ></button>
+            </form>
+            <ul class="todo_items" id="low-tasks">
+              <li>
+                <input type="checkbox" id="youtube-task" name="youtube-task" />
+                <label for="youtube-task">Посмотреть ютубчик</label>
+                <button class="lnr lnr-cross"></button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

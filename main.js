@@ -6,9 +6,9 @@ const choosePriority = (event) => {
   return event.target.id === "high-form" ? "#new-task-high" : "#new-task-low";
 };
 
-function addTask(e) {
-  e.preventDefault();
-  let inputValue = document.querySelector(choosePriority(e)).value;
+function addTask(event) {
+  event.preventDefault();
+  let inputValue = document.querySelector(choosePriority(event)).value;
   let newTask = document.createElement("li");
   let newInput = document.createElement("input");
   let newLabel = document.createElement("label");
@@ -23,15 +23,16 @@ function addTask(e) {
   newTask.appendChild(newLabel);
   newTask.appendChild(newButton);
 
-  const taskList = document.querySelector(chooseList(e));
+  const taskList = document.querySelector(chooseList(event));
 
   taskList.appendChild(newTask);
+  event.target.reset();
 }
 
-let highForm = document.getElementById("high-form");
+let highForm = document.querySelector("#high-form");
 
 highForm.addEventListener("submit", addTask);
 
-let lowForm = document.getElementById("low-form");
+let lowForm = document.querySelector("#low-form");
 
 lowForm.addEventListener("submit", addTask);

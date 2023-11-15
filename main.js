@@ -11,6 +11,7 @@ const PRIORITY = {
 };
 
 const tasks = new Array();
+// tasks.push({ kek: "lol" });
 
 // const checkNameValidity = (name) => {
 //   return typeof name === "string" && name !== "";
@@ -47,6 +48,7 @@ function render(event) {
     newInput.setAttribute("type", "checkbox");
     newButton.classList.add("lnr");
     newButton.classList.add("lnr-cross");
+    // newButton.setAttribute("type", "button");
 
     newTask.appendChild(newInput);
     newTask.appendChild(newLabel);
@@ -56,6 +58,7 @@ function render(event) {
     console.log(taskList);
 
     taskList.appendChild(newTask);
+    newButton.addEventListener("click", removeTask);
   });
 }
 
@@ -74,6 +77,24 @@ function addTask(event, status = STATUS.TODO) {
   render(event);
 }
 
+function deleteFromStorage(name) {
+  let index = tasks.findIndex(function (item) {
+    return item.name === name;
+  });
+
+  if (index !== -1) {
+    tasks.splice(index, 1);
+  }
+}
+
+function removeTask(event) {
+  deleteFromStorage(event.target.previousElementSibling.textContent);
+
+  event.target.removeEventListener("click", removeTask);
+
+  render(event);
+}
+
 // function changeStatus(event) {
 //   let status;
 // }
@@ -85,3 +106,8 @@ highForm.addEventListener("submit", addTask);
 let lowForm = document.querySelector("#low-form");
 
 lowForm.addEventListener("submit", addTask);
+
+// let buttonsAfterRender = document.querySelectorAll('button[type="button"]');
+// buttonsAfterRender.forEach(function (button) {
+//   button.addEventListener("click", removeTask);
+// });

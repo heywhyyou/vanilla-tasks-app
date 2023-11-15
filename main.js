@@ -1,5 +1,3 @@
-// Logic task
-
 const STATUS = {
   TODO: "to do",
   DONE: "done",
@@ -11,7 +9,6 @@ const PRIORITY = {
 };
 
 const tasks = new Array();
-// tasks.push({ kek: "lol" });
 
 // const checkNameValidity = (name) => {
 //   return typeof name === "string" && name !== "";
@@ -46,26 +43,27 @@ function render(event) {
 
     newLabel.textContent = newName;
     newInput.setAttribute("type", "checkbox");
+    if (task.status === "done") {
+      newInput.checked = "true";
+    }
     newButton.classList.add("lnr");
     newButton.classList.add("lnr-cross");
-    // newButton.setAttribute("type", "button");
 
     newTask.appendChild(newInput);
     newTask.appendChild(newLabel);
     newTask.appendChild(newButton);
 
     const taskList = chooseListRender(task.priority);
-    console.log(taskList);
 
     taskList.appendChild(newTask);
+    newInput.addEventListener("click", changeStatus);
     newButton.addEventListener("click", removeTask);
   });
+  console.log("Render just happened.");
 }
 
 function addToStorage(event, name, status) {
   let priority = choosePriority(event) === "#new-task-high" ? "high" : "low";
-  console.log(priority);
-  console.log(event);
   tasks.push({ name, status, priority });
 }
 
@@ -95,9 +93,18 @@ function removeTask(event) {
   render(event);
 }
 
-// function changeStatus(event) {
-//   let status;
-// }
+function changeStatus(event) {
+  let index = tasks.findIndex(function (item) {
+    return item.name === event.target.nextElementSibling.textContent;
+  });
+
+  if (index !== -1 && tasks[index].status === "to do") {
+    tasks[index].status = "done";
+  } else {
+    tasks[index].status = "to do";
+  }
+  render(event);
+}
 
 let highForm = document.querySelector("#high-form");
 
@@ -106,8 +113,3 @@ highForm.addEventListener("submit", addTask);
 let lowForm = document.querySelector("#low-form");
 
 lowForm.addEventListener("submit", addTask);
-
-// let buttonsAfterRender = document.querySelectorAll('button[type="button"]');
-// buttonsAfterRender.forEach(function (button) {
-//   button.addEventListener("click", removeTask);
-// });

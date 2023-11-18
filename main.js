@@ -30,7 +30,7 @@ const choosePriority = (event) => {
   return event.target.id === "high-form" ? "#new-task-high" : "#new-task-low";
 };
 
-function render(event) {
+const render = (event) => {
   let allTasks = document.querySelectorAll("li");
   allTasks.forEach(function (task) {
     task.remove();
@@ -62,23 +62,23 @@ function render(event) {
     newButton.addEventListener("click", removeTask);
   });
   console.log("Render just happened.");
-}
+};
 
-function addToStorage(event, name, status) {
+const addToStorage = (event, name, status) => {
   let priority = choosePriority(event) === "#new-task-high" ? "high" : "low";
   tasks.push({ name, status, priority });
-}
+};
 
-function checkName(array, searchString) {
+const checkName = (array, searchString) => {
   for (let i = 0; i < array.length; i++) {
     if (array[i].name === searchString) {
       return true;
     }
   }
   return false;
-}
+};
 
-function addTask(event, status = STATUS.TODO) {
+const addTask = (event, status = STATUS.TODO) => {
   event.preventDefault();
 
   try {
@@ -98,9 +98,9 @@ function addTask(event, status = STATUS.TODO) {
   } catch (error) {
     alert(error);
   }
-}
+};
 
-function deleteFromStorage(name) {
+const deleteFromStorage = (name) => {
   let index = tasks.findIndex(function (item) {
     return item.name === name;
   });
@@ -108,17 +108,17 @@ function deleteFromStorage(name) {
   if (index !== -1) {
     tasks.splice(index, 1);
   }
-}
+};
 
-function removeTask(event) {
+const removeTask = (event) => {
   deleteFromStorage(event.target.previousElementSibling.textContent);
 
   event.target.removeEventListener("click", removeTask);
 
   render(event);
-}
+};
 
-function changeStatus(event) {
+const changeStatus = (event) => {
   let index = tasks.findIndex(function (item) {
     return item.name === event.target.nextElementSibling.textContent;
   });
@@ -129,7 +129,7 @@ function changeStatus(event) {
     tasks[index].status = "to do";
   }
   render(event);
-}
+};
 
 let highForm = document.querySelector("#high-form");
 

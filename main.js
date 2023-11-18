@@ -67,12 +67,35 @@ function addToStorage(event, name, status) {
   tasks.push({ name, status, priority });
 }
 
+function checkName(array, searchString) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].name === searchString) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function addTask(event, status = STATUS.TODO) {
   event.preventDefault();
-  let inputValue = document.querySelector(choosePriority(event)).value;
-  event.target.reset();
-  addToStorage(event, inputValue, status);
-  render(event);
+
+  try {
+    let inputValue = document.querySelector(choosePriority(event)).value;
+
+    if (inputValue.length < 3 || inputValue.length > 50) {
+      throw new Error("имя задачи должно быть от 3 до 50 символов.");
+    }
+
+    if (checkName(tasks, inputValue)) {
+      throw new Error("такое имя задачи уже существует, выберите другое.");
+    }
+
+    event.target.reset();
+    addToStorage(event, inputValue, status);
+    render(event);
+  } catch (error) {
+    alert(error);
+  }
 }
 
 function deleteFromStorage(name) {

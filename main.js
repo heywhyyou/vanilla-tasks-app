@@ -12,10 +12,6 @@ const PRIORITY = {
 
 const tasks = new Array();
 
-// const checkNameValidity = (name) => {
-//   return typeof name === "string" && name !== "";
-// };
-
 const chooseList = (event) => {
   return event.target.id === "high-form" ? "#high-tasks" : "#low-tasks";
 };

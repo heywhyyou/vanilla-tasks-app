@@ -1,3 +1,5 @@
+import data from "./tasks.json" assert { type: "json" };
+
 const STATUS = {
   TODO: "to do",
   DONE: "done",
@@ -136,3 +138,9 @@ highForm.addEventListener("submit", addTask);
 let lowForm = document.querySelector("#low-form");
 
 lowForm.addEventListener("submit", addTask);
+
+data.tasks.forEach((task) => {
+  tasks.push(task);
+});
+
+render();

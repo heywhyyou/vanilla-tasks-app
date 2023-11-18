@@ -1,0 +1,29 @@
+{
+  "tasks": [
+    {
+      "name": "занести задачки в todoist",
+      "status": "to do",
+      "priority": "high"
+    },
+    {
+      "name": "купить тофу",
+      "status": "to do",
+      "priority": "high"
+    },
+    {
+      "name": "поделать дейлики",
+      "status": "to do",
+      "priority": "low"
+    },
+    {
+      "name": "посмотреть подписки на ютубе",
+      "status": "to do",
+      "priority": "low"
+    },
+    {
+      "name": "посмотреть сериал",
+      "status": "to do",
+      "priority": "low"
+    }
+  ]
+}

@@ -28,7 +28,7 @@ const choosePriority = (event) => {
 
 const render = (event) => {
   let allTasks = document.querySelectorAll("li");
-  allTasks.forEach(function (task) {
+  allTasks.forEach((task) => {
     task.remove();
   });
 
@@ -74,13 +74,17 @@ const checkName = (array, searchString) => {
   return false;
 };
 
+const checkLengthValidity = (inputValue) => {
+  return inputValue.length < 3 || inputValue.length > 50;
+};
+
 const addTask = (event, status = STATUS.TODO) => {
   event.preventDefault();
 
   try {
     let inputValue = document.querySelector(choosePriority(event)).value;
 
-    if (inputValue.length < 3 || inputValue.length > 50) {
+    if (checkLengthValidity(inputValue)) {
       throw new Error("имя задачи должно быть от 3 до 50 символов.");
     }
 

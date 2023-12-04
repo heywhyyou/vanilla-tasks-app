@@ -60,10 +60,12 @@ const render = (event) => {
   console.log("Render just happened.");
 };
 
-const addToStorage = (event, name, status) => {
-  let priority = choosePriority(event) === "#new-task-high" ? "high" : "low";
-  tasks.push({ name, status, priority });
-};
+function Task(event, name, status) {
+  this.priority = choosePriority(event) === "#new-task-high" ? "high" : "low";
+  this.name = name;
+  this.status = status;
+  tasks.push(this);
+}
 
 const checkName = (array, searchString) => {
   for (let i = 0; i < array.length; i++) {
@@ -93,7 +95,7 @@ const addTask = (event, status = STATUS.TODO) => {
     }
 
     event.target.reset();
-    addToStorage(event, inputValue, status);
+    new Task(event, inputValue, status);
     render(event);
   } catch (error) {
     alert(error);

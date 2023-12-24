@@ -61,9 +61,9 @@ const render = (event) => {
 };
 
 function Task(event, name, status) {
-  this.priority = choosePriority(event) === "#new-task-high" ? "high" : "low";
   this.name = name;
   this.status = status;
+  this.priority = choosePriority(event) === "#new-task-high" ? "high" : "low";
   tasks.push(this);
 }
 

@@ -80,6 +80,13 @@ const checkLengthValidity = (inputValue) => {
   return inputValue.length < 3 || inputValue.length > 50;
 };
 
+class ValidationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "ValidationError";
+  }
+}
+
 const addTask = (event, status = STATUS.TODO) => {
   event.preventDefault();
 
@@ -87,11 +94,13 @@ const addTask = (event, status = STATUS.TODO) => {
     let inputValue = document.querySelector(choosePriority(event)).value;
 
     if (checkLengthValidity(inputValue)) {
-      throw new Error("имя задачи должно быть от 3 до 50 символов.");
+      throw new ValidationError("имя задачи должно быть от 3 до 50 символов.");
     }
 
     if (checkName(tasks, inputValue)) {
-      throw new Error("такое имя задачи уже существует, выберите другое.");
+      throw new ValidationError(
+        "такое имя задачи уже существует, выберите другое."
+      );
     }
 
     event.target.reset();
